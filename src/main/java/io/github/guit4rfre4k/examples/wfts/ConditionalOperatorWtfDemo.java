@@ -13,14 +13,15 @@ public class ConditionalOperatorWtfDemo {
 
     public static void main(String[] args) {
 
-        Double doubleValue1 = null;
-        boolean booleanValue = true;
+        Double valueIfTrue = null;
+        double valueIfFalse = 1.0;
+        boolean isTrue = true;
 
         // According to JLS, the resulting value of the conditional expression is double (see: JLS -> 15.25.")
         // As a consequence, while evaluating a final value of the conditional expression,
         // Java tries to unbox the second operand what (because it's null) leads to a NPE.
         //
-        Double resultValue = booleanValue ? doubleValue1 : 1.0;  // boolean ? Double : double  --> Java tries to unbox the Double which is null
+        Double resultValue = isTrue ? valueIfTrue : valueIfFalse;  // boolean ? Double : double  --> Java tries to unbox the Double which is null
         LOG.info("Result value is: " + resultValue);
     }
 
